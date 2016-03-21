@@ -37,11 +37,7 @@ public class CoffeeMaker {
         boolean canAddRecipe = true;
             
         //Check if the recipe already exists
-        for(int i = 0; i < NUM_RECIPES; i++) {
-            if(r.equals(recipeArray[i])) {
-                canAddRecipe = false;
-            }
-        }
+        canAddRecipe = !checkList(r);
         
         //Check for an empty recipe, add recipe to first empty spot
         if(canAddRecipe) {
@@ -62,7 +58,24 @@ public class CoffeeMaker {
         }
         return canAddRecipe;
     }
-    
+	
+	/**
+	 * Check recipe list to see if a recipe is in the list
+	 * @param r
+	 * @return boolean
+	 */
+    private boolean checkList(Recipe r) {
+    	boolean isInList = false;
+    	
+        for(int i = 0; i < NUM_RECIPES; i++) {
+            if(r.equals(recipeArray[i])) {
+                isInList = true;
+            }
+        }
+        
+        return isInList;
+    }
+	
 	/**
 	 * Returns true if the recipe was deleted from the 
 	 * coffee maker
