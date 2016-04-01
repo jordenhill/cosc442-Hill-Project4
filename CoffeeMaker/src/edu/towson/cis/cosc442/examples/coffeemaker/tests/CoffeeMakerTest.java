@@ -179,7 +179,10 @@ public class CoffeeMakerTest {
 	 */
 	@Test
 	public final void testDeleteRecipe() {
-		fail("Not yet implemented"); // TODO
+		//Can you delete a recipe?
+		myCoffeeMaker.addRecipe(myRecipe1);
+		boolean successfullyDeleted = myCoffeeMaker.deleteRecipe(myRecipe1);
+		assertTrue("Unsuccessfully deleted Coffee recipe", successfullyDeleted);
 	}
 
 	/**
@@ -187,7 +190,17 @@ public class CoffeeMakerTest {
 	 */
 	@Test
 	public final void testEditRecipe() {
-		fail("Not yet implemented"); // TODO
+		// Can you edit a recipe?
+		myCoffeeMaker.addRecipe(myRecipe1);
+		Recipe newRecipe = new Recipe();
+		newRecipe.setName("Coffee");
+		newRecipe.setPrice(50);
+		newRecipe.setAmtCoffee(3);
+		newRecipe.setAmtMilk(2);
+		newRecipe.setAmtSugar(1);
+		newRecipe.setAmtChocolate(0);
+		boolean successfullyEdited = myCoffeeMaker.editRecipe(myRecipe1, newRecipe);
+		assertTrue("Unsuccessfully edited recipe", successfullyEdited);
 	}
 
 	/**
@@ -195,7 +208,8 @@ public class CoffeeMakerTest {
 	 */
 	@Test
 	public final void testAddInventory() {
-		fail("Not yet implemented"); // TODO
+		boolean successfullyAddedInventory = myCoffeeMaker.addInventory(3, 1, 2, 1);
+		assertTrue("Unsuccesfully added inventory", successfullyAddedInventory);
 	}
 
 	/**
@@ -203,7 +217,7 @@ public class CoffeeMakerTest {
 	 */
 	@Test
 	public final void testCheckInventory() {
-		fail("Not yet implemented"); // TODO
+		assertNotNull("Could not get iventory", myCoffeeMaker.checkInventory());
 	}
 
 	/**

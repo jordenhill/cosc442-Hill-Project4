@@ -26,6 +26,11 @@ public class CoffeeMakerTest extends TestCase {
 	public void testAddRecipe1() {
 		assertTrue(cm.addRecipe(r1));
 	}
+	
+	public void testAddRecipe2() {
+		cm.addRecipe(r1);
+		assertFalse(cm.addRecipe(r1));
+	}
 
 	public void testDeleteRecipe1() {
 		cm.addRecipe(r1);
@@ -38,5 +43,31 @@ public class CoffeeMakerTest extends TestCase {
 		newRecipe = r1;
 		newRecipe.setAmtSugar(2);
 		assertTrue(cm.editRecipe(r1, newRecipe));
+	}
+	
+	public void testAddInventory1() {
+		boolean addedInv = cm.addInventory(3, 1, 2, 1);
+		assertTrue("Could not add inventory", addedInv);
+	}
+	
+	public void testAddInventory2() {
+		cm.addInventory(3, 1, 2, 1);
+		cm.addRecipe(r1);
+		cm.deleteRecipe(r1);
+		assertEquals("Inventory changed", 18, cm.checkInventory().getCoffee());
+	}
+	
+	public void testCheckInventory1() {
+		assertNotNull("Could not check inventory", cm.checkInventory());
+	}
+	
+	public void testMakePurchase1() {
+		cm.addRecipe(r1);
+		assertEquals("Did not get correct amount of change", 25, cm.makeCoffee(r1, 75));
+	}
+	
+	public void testMakePurchase2() {
+		cm.addRecipe(r1);
+		assertEquals("Did not get amount paid back", 40, cm.makeCoffee(r1, 40));
 	}
 }
