@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>CoffeeMakerTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">edu.towson.cis.cosc442.project4.coffeemaker (Apr 1, 2016 8:56:30 PM)</a> &gt; <a href="../../index.html" class="el_group">CoffeeMaker</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">edu.towson.cis.cosc442.examples.coffeemaker.tests</a> &gt; <span class="el_source">CoffeeMakerTest.java</span></div><h1>CoffeeMakerTest.java</h1><pre class="source lang-java linenums">/**
+ * 
+ */
+package edu.towson.cis.cosc442.examples.coffeemaker.tests;
+
+import static org.junit.Assert.*;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import edu.towson.cis.cosc442.examples.coffeemaker.*;
+
+/**
+ * @author jhill19
+ *
+ */
+<span class="nc" id="L18">public class CoffeeMakerTest {</span>
+
+	CoffeeMaker myCoffeeMaker;
+	Recipe myRecipe1;
+	Recipe myRecipe2;
+	Recipe myRecipe3;
+	Recipe myRecipe4;
+	Recipe myRecipe5;
+	
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@Before
+	public void setUp() throws Exception {
+		//Construct CoffeeMaker
+<span class="nc" id="L33">		myCoffeeMaker = new CoffeeMaker();</span>
+		
+		//Construct Recipes
+<span class="nc" id="L36">		myRecipe1 = new Recipe();</span>
+<span class="nc" id="L37">		myRecipe2 = new Recipe();</span>
+<span class="nc" id="L38">		myRecipe3 = new Recipe();</span>
+<span class="nc" id="L39">		myRecipe4 = new Recipe();</span>
+<span class="nc" id="L40">		myRecipe5 = new Recipe();</span>
+		
+		//Set myRecipe1 parameters
+<span class="nc" id="L43">		myRecipe1.setName(&quot;Coffee&quot;);</span>
+<span class="nc" id="L44">		myRecipe1.setPrice(50);</span>
+<span class="nc" id="L45">		myRecipe1.setAmtCoffee(3);</span>
+<span class="nc" id="L46">		myRecipe1.setAmtMilk(1);</span>
+<span class="nc" id="L47">		myRecipe1.setAmtSugar(1);</span>
+<span class="nc" id="L48">		myRecipe1.setAmtChocolate(0);</span>
+		
+		//Set myRecipe2 parameters
+<span class="nc" id="L51">		myRecipe2.setName(&quot;Mocha&quot;);</span>
+<span class="nc" id="L52">		myRecipe2.setPrice(50);</span>
+<span class="nc" id="L53">		myRecipe2.setAmtCoffee(3);</span>
+<span class="nc" id="L54">		myRecipe2.setAmtMilk(1);</span>
+<span class="nc" id="L55">		myRecipe2.setAmtSugar(2);</span>
+<span class="nc" id="L56">		myRecipe2.setAmtChocolate(3);</span>
+		
+		//Set myRecipe3 parameters
+<span class="nc" id="L59">		myRecipe3.setName(&quot;Latte&quot;);</span>
+<span class="nc" id="L60">		myRecipe3.setPrice(70);</span>
+<span class="nc" id="L61">		myRecipe3.setAmtCoffee(2);</span>
+<span class="nc" id="L62">		myRecipe3.setAmtMilk(2);</span>
+<span class="nc" id="L63">		myRecipe3.setAmtSugar(4);</span>
+<span class="nc" id="L64">		myRecipe3.setAmtChocolate(2);</span>
+		
+		//Set myRecipe4 parameters
+<span class="nc" id="L67">		myRecipe4.setName(&quot;Capuccino&quot;);</span>
+<span class="nc" id="L68">		myRecipe4.setPrice(40);</span>
+<span class="nc" id="L69">		myRecipe4.setAmtCoffee(2);</span>
+<span class="nc" id="L70">		myRecipe4.setAmtMilk(3);</span>
+<span class="nc" id="L71">		myRecipe4.setAmtSugar(2);</span>
+<span class="nc" id="L72">		myRecipe4.setAmtChocolate(1);</span>
+		
+		//Set myRecipe5 parameters
+<span class="nc" id="L75">		myRecipe4.setName(&quot;Espresso&quot;);</span>
+<span class="nc" id="L76">		myRecipe4.setPrice(40);</span>
+<span class="nc" id="L77">		myRecipe4.setAmtCoffee(4);</span>
+<span class="nc" id="L78">		myRecipe4.setAmtMilk(2);</span>
+<span class="nc" id="L79">		myRecipe4.setAmtSugar(3);</span>
+<span class="nc" id="L80">		myRecipe4.setAmtChocolate(0);</span>
+<span class="nc" id="L81">	}</span>
+
+	/**
+	 * @throws java.lang.Exception
+	 */
+	@After
+	public void tearDown() throws Exception {
+<span class="nc" id="L88">		myCoffeeMaker = null;</span>
+<span class="nc" id="L89">		System.gc();</span>
+<span class="nc" id="L90">	}</span>
+
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.examples.coffeemaker.CoffeeMaker#CoffeeMaker()}.
+	 */
+	@Test
+	public final void testCoffeeMaker() {
+<span class="nc" id="L97">		fail(&quot;Not yet implemented&quot;); // TODO</span>
+<span class="nc" id="L98">	}</span>
+
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.examples.coffeemaker.CoffeeMaker#addRecipe(edu.towson.cis.cosc442.examples.coffeemaker.Recipe)}.
+	 * Testing for successfully adding a recipe a la acceptance test addRecipe1
+	 */
+	@Test
+	public final void testAddRecipe() {
+		//Can you add a recipe?
+<span class="nc" id="L107">		boolean successfullyAdded = myCoffeeMaker.addRecipe(myRecipe1);</span>
+<span class="nc" id="L108">		assertTrue(&quot;Successfully added recipe&quot;, successfullyAdded);</span>
+<span class="nc" id="L109">	}</span>
+	
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.examples.coffeemaker.CoffeeMaker#addRecipe(edu.towson.cis.cosc442.examples.coffeemaker.Recipe)}.
+	 * Testing for unsuccessfully adding a recipe with an exact copy
+	 */
+	@Test
+	public final void testAddSameRecipe() {
+		//Can you not add the same recipe again?
+<span class="nc" id="L118">		boolean successfullyAdded = myCoffeeMaker.addRecipe(myRecipe1);</span>
+<span class="nc" id="L119">		boolean unsuccessfullyAdded = myCoffeeMaker.addRecipe(myRecipe1);</span>
+<span class="nc" id="L120">		assertFalse(&quot;Unsuccessfully added recipe&quot;, unsuccessfullyAdded);</span>
+<span class="nc" id="L121">	}</span>
+	
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.examples.coffeemaker.CoffeeMaker#addRecipe(edu.towson.cis.cosc442.examples.coffeemaker.Recipe)}.
+	 * Testing for successfully adding a second recipe to the list
+	 */
+	@Test
+	public final void testAddSecondRecipe() {
+		//Can you not add a second recipe?
+<span class="nc" id="L130">		myCoffeeMaker.addRecipe(myRecipe1);</span>
+<span class="nc" id="L131">		boolean successfullyAdded = myCoffeeMaker.addRecipe(myRecipe2);</span>
+<span class="nc" id="L132">		assertTrue(&quot;Successfully added second recipe&quot;, successfullyAdded);</span>
+<span class="nc" id="L133">	}</span>
+
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.examples.coffeemaker.CoffeeMaker#addRecipe(edu.towson.cis.cosc442.examples.coffeemaker.Recipe)}.
+	 * Testing for successfully adding a third recipe to the list
+	 */
+	@Test
+	public final void testAddThirdRecipe() {
+		//Can you not add a second recipe?
+<span class="nc" id="L142">		myCoffeeMaker.addRecipe(myRecipe1);</span>
+<span class="nc" id="L143">		myCoffeeMaker.addRecipe(myRecipe2);</span>
+<span class="nc" id="L144">		boolean successfullyAdded = myCoffeeMaker.addRecipe(myRecipe3);</span>
+<span class="nc" id="L145">		assertTrue(&quot;Successfully added third recipe&quot;, successfullyAdded);</span>
+<span class="nc" id="L146">	}</span>
+	
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.examples.coffeemaker.CoffeeMaker#addRecipe(edu.towson.cis.cosc442.examples.coffeemaker.Recipe)}.
+	 * Testing for successfully adding a fourth recipe to the list
+	 */
+	@Test
+	public final void testAddFourthRecipe() {
+		//Can you not add a second recipe?
+<span class="nc" id="L155">		myCoffeeMaker.addRecipe(myRecipe1);</span>
+<span class="nc" id="L156">		myCoffeeMaker.addRecipe(myRecipe2);</span>
+<span class="nc" id="L157">		myCoffeeMaker.addRecipe(myRecipe3);</span>
+<span class="nc" id="L158">		boolean successfullyAdded = myCoffeeMaker.addRecipe(myRecipe4);</span>
+<span class="nc" id="L159">		assertTrue(&quot;Successfully added fourth recipe&quot;, successfullyAdded);</span>
+<span class="nc" id="L160">	}</span>
+	
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.examples.coffeemaker.CoffeeMaker#addRecipe(edu.towson.cis.cosc442.examples.coffeemaker.Recipe)}.
+	 * Testing for unsuccessfully adding a fifth recipe to the list
+	 */
+	@Test
+	public final void testAddFifthRecipe() {
+		//Can you not add a second recipe?
+<span class="nc" id="L169">		myCoffeeMaker.addRecipe(myRecipe1);</span>
+<span class="nc" id="L170">		myCoffeeMaker.addRecipe(myRecipe2);</span>
+<span class="nc" id="L171">		myCoffeeMaker.addRecipe(myRecipe3);</span>
+<span class="nc" id="L172">		myCoffeeMaker.addRecipe(myRecipe4);</span>
+<span class="nc" id="L173">		boolean unsuccessfullyAdded = myCoffeeMaker.addRecipe(myRecipe5);</span>
+<span class="nc" id="L174">		assertFalse(&quot;Unsuccessfully added fifth recipe&quot;, unsuccessfullyAdded);</span>
+<span class="nc" id="L175">	}</span>
+	
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.examples.coffeemaker.CoffeeMaker#deleteRecipe(edu.towson.cis.cosc442.examples.coffeemaker.Recipe)}.
+	 */
+	@Test
+	public final void testDeleteRecipe() {
+		//Can you delete a recipe?
+<span class="nc" id="L183">		myCoffeeMaker.addRecipe(myRecipe1);</span>
+<span class="nc" id="L184">		boolean successfullyDeleted = myCoffeeMaker.deleteRecipe(myRecipe1);</span>
+<span class="nc" id="L185">		assertTrue(&quot;Unsuccessfully deleted Coffee recipe&quot;, successfullyDeleted);</span>
+<span class="nc" id="L186">	}</span>
+
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.examples.coffeemaker.CoffeeMaker#editRecipe(edu.towson.cis.cosc442.examples.coffeemaker.Recipe, edu.towson.cis.cosc442.examples.coffeemaker.Recipe)}.
+	 */
+	@Test
+	public final void testEditRecipe() {
+		// Can you edit a recipe?
+<span class="nc" id="L194">		myCoffeeMaker.addRecipe(myRecipe1);</span>
+<span class="nc" id="L195">		Recipe newRecipe = new Recipe();</span>
+<span class="nc" id="L196">		newRecipe.setName(&quot;Coffee&quot;);</span>
+<span class="nc" id="L197">		newRecipe.setPrice(50);</span>
+<span class="nc" id="L198">		newRecipe.setAmtCoffee(3);</span>
+<span class="nc" id="L199">		newRecipe.setAmtMilk(2);</span>
+<span class="nc" id="L200">		newRecipe.setAmtSugar(1);</span>
+<span class="nc" id="L201">		newRecipe.setAmtChocolate(0);</span>
+<span class="nc" id="L202">		boolean successfullyEdited = myCoffeeMaker.editRecipe(myRecipe1, newRecipe);</span>
+<span class="nc" id="L203">		assertTrue(&quot;Unsuccessfully edited recipe&quot;, successfullyEdited);</span>
+<span class="nc" id="L204">	}</span>
+
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.examples.coffeemaker.CoffeeMaker#addInventory(int, int, int, int)}.
+	 */
+	@Test
+	public final void testAddInventory() {
+<span class="nc" id="L211">		boolean successfullyAddedInventory = myCoffeeMaker.addInventory(3, 1, 2, 1);</span>
+<span class="nc" id="L212">		assertTrue(&quot;Unsuccesfully added inventory&quot;, successfullyAddedInventory);</span>
+<span class="nc" id="L213">	}</span>
+
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.examples.coffeemaker.CoffeeMaker#checkInventory()}.
+	 */
+	@Test
+	public final void testCheckInventory() {
+<span class="nc" id="L220">		assertNotNull(&quot;Could not get iventory&quot;, myCoffeeMaker.checkInventory());</span>
+<span class="nc" id="L221">	}</span>
+
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.examples.coffeemaker.CoffeeMaker#makeCoffee(edu.towson.cis.cosc442.examples.coffeemaker.Recipe, int)}.
+	 */
+	@Test
+	public final void testMakeCoffee() {
+<span class="nc" id="L228">		fail(&quot;Not yet implemented&quot;); // TODO</span>
+<span class="nc" id="L229">	}</span>
+
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.examples.coffeemaker.CoffeeMaker#getRecipes()}.
+	 */
+	@Test
+	public final void testGetRecipes() {
+<span class="nc" id="L236">		fail(&quot;Not yet implemented&quot;); // TODO</span>
+<span class="nc" id="L237">	}</span>
+
+	/**
+	 * Test method for {@link edu.towson.cis.cosc442.examples.coffeemaker.CoffeeMaker#getRecipeForName(java.lang.String)}.
+	 */
+	@Test
+	public final void testGetRecipeForName() {
+<span class="nc" id="L244">		fail(&quot;Not yet implemented&quot;); // TODO</span>
+<span class="nc" id="L245">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.6.201602180812</span>edu.towson.cis.cosc442.project4.coffeemaker (Apr 1, 2016 8:56:30 PM)</div></body></html>

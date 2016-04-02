@@ -36,7 +36,11 @@ public class CoffeeMakerTest extends TestCase {
 		cm.addRecipe(r1);
 		assertTrue(cm.deleteRecipe(r1));
 	}
-
+	
+	public void testDeleteRecipe2() {
+		assertFalse(cm.deleteRecipe(null));
+	}
+	
 	public void testEditRecipe1() {
 		cm.addRecipe(r1);
 		Recipe newRecipe = new Recipe();
@@ -57,6 +61,41 @@ public class CoffeeMakerTest extends TestCase {
 		assertEquals("Inventory changed", 18, cm.checkInventory().getCoffee());
 	}
 	
+	public void testAddInventory3() {
+		cm.addInventory(3, 1, 2, 1);
+		assertEquals("Inventory changed", 16, cm.checkInventory().getMilk());
+	}
+	
+	public void testAddInventory4() {
+		cm.addInventory(3, 1, 2, 1);
+		assertEquals("Inventory changed", 17, cm.checkInventory().getSugar());
+	}
+	
+	public void testAddInventory5() {
+		cm.addInventory(3, 1, 2, 1);
+		assertEquals("Inventory changed", 16, cm.checkInventory().getChocolate());
+	}
+	
+	public void testAddNegativeCoffee() {
+		cm.addInventory(-1, 1, 2, 1);
+		assertEquals("Added negative amount of coffee", 15, cm.checkInventory().getCoffee());
+	}
+	
+	public void testAddNegativeMilk() {
+		cm.addInventory(3, -1, 2, 1);
+		assertEquals("Added negative amount of milk", 15, cm.checkInventory().getMilk());
+	}
+	
+	public void testAddNegativeSugar() {
+		cm.addInventory(3, 1, -1, 1);
+		assertEquals("Added negative amount of chocolate", 15, cm.checkInventory().getSugar());
+	}
+	
+	public void testAddNegativeChocolate() {
+		cm.addInventory(3, 1, 2, -1);
+		assertEquals("Added negative amount of chocolate", 15, cm.checkInventory().getChocolate());
+	}
+	
 	public void testCheckInventory1() {
 		assertNotNull("Could not check inventory", cm.checkInventory());
 	}
@@ -69,5 +108,47 @@ public class CoffeeMakerTest extends TestCase {
 	public void testMakePurchase2() {
 		cm.addRecipe(r1);
 		assertEquals("Did not get amount paid back", 40, cm.makeCoffee(r1, 40));
+	}
+	
+	public void testInsufficientInventory() {
+		r1 = new Recipe();
+		r1.setName("Coffee");
+		r1.setPrice(50);
+		r1.setAmtCoffee(16);
+		r1.setAmtMilk(1);
+		r1.setAmtSugar(1);
+		r1.setAmtChocolate(0);
+		cm.addRecipe(r1);
+		assertEquals("Made coffee without enough ingredients", 50, cm.makeCoffee(r1, 50));
+	}
+	
+	public void testCoffeeAmountAlteration() {
+		cm.addRecipe(r1);
+		cm.makeCoffee(r1, 50);
+		assertEquals("Incorrect coffee", 9, cm.checkInventory().getCoffee());
+	}
+	
+	public void testMilkAmountAlteration() {
+		cm.addRecipe(r1);
+		cm.makeCoffee(r1, 50);
+		assertEquals("Incorrect milk amount", 14, cm.checkInventory().getMilk());
+	}
+	
+	public void testSugarAmountAlteration() {
+		cm.addRecipe(r1);
+		cm.makeCoffee(r1, 50);
+		assertEquals("Incorrect coffee", 14, cm.checkInventory().getSugar());
+	}
+	
+	public void testChocolateAmountAlteration() {
+		r1.setAmtChocolate(1);
+		cm.addRecipe(r1);
+		cm.makeCoffee(r1, 50);
+		assertEquals("Incorrect coffee", 14, cm.checkInventory().getChocolate());
+	}
+	
+	public void testGetRecipeForName() {
+		cm.addRecipe(r1);
+		assertEquals("Got incorrect recipe", "Coffee", cm.getRecipeForName("Coffee").getName());
 	}
 }
